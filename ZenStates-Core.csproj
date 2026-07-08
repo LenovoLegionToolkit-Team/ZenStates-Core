@@ -6,6 +6,11 @@
     <Company>irusanov</Company>
     <Product>ZenStates.Core</Product>
     <Copyright>Copyright © 2026</Copyright>
+    <Authors>irusanov, LenovoLegionToolkit-Team</Authors>
+    <PackageId>LLT.ZenStates-Core</PackageId>
+    <PackageProjectUrl>https://github.com/LenovoLegionToolkit-Team/ZenStates-Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/LenovoLegionToolkit-Team/ZenStates-Core</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows> 
     <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux> 

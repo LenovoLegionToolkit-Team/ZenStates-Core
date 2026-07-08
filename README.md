@@ -3,6 +3,14 @@
 > [!NOTE]
 > This repository is a pure NuGet packaging fork of the original [ZenStates-Core](https://github.com/irusanov/ZenStates-Core) library, with zero changes to the source code. It exists solely for the convenience of the [Lenovo Legion Toolkit](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit) project.
 
+[![GitHub license](https://img.shields.io/github/license/LenovoLegionToolkit-Team/ZenStates-Core)](https://github.com/LenovoLegionToolkit-Team/ZenStates-Core/blob/master/LICENSE) [![NuGet](https://img.shields.io/nuget/v/LLT.ZenStates-Core.svg)](https://nuget.org/packages/LLT.ZenStates-Core) [![NuGet Downloads](https://img.shields.io/nuget/dt/LLT.ZenStates-Core.svg)](https://nuget.org/packages/LLT.ZenStates-Core) [![Platform](https://img.shields.io/badge/platform-Windows-blue?logo=windowsxp&color=1E9BFA)](https://dotnet.microsoft.com/en-us/download/dotnet/latest/runtime)
+
+## Installation
+
+```shell
+dotnet add package LLT.ZenStates-Core
+```
+
 This project aims to provide a common functions for full SMU control on AMD Zen platform.  
 The library is used in ZenTimings and ZenStates projects.
 

@@ -1,4 +1,8 @@
 # ZenStates-Core
+
+> [!NOTE]
+> This repository is a pure NuGet packaging fork of the original [ZenStates-Core](https://github.com/irusanov/ZenStates-Core) library, with zero changes to the source code. It exists solely for the convenience of the [Lenovo Legion Toolkit](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit) project.
+
 This project aims to provide a common functions for full SMU control on AMD Zen platform.  
 The library is used in ZenTimings and ZenStates projects.
 

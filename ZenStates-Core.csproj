@@ -14,6 +14,8 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows> 
     <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux> 
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -82,12 +84,8 @@
     <None Include="External\InpOut\x64\inpoutx64.lib" />
     <None Include="External\WinIo\WinIo32.dll" />
     <None Include="External\WinIo\WinIo32.sys" />
-    <None Include="LICENSE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="README.md">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+	<None Include="LICENSE" Pack="true" PackagePath="\" CopyToOutputDirectory="Always" />
+    <None Include="README.md" Pack="true" PackagePath="\" CopyToOutputDirectory="Always" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' != 'net20'">
     <PackageReference Include="System.Management" Version="6.0.0">

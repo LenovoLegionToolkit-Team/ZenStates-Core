@@ -1,0 +1,89 @@
+name: Build and Prerelease
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build & Prerelease
+    runs-on: windows-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Determine Version
+        id: get_version
+        run: |
+          $githubVersionStr = ""
+          try {
+            $env:GH_TOKEN = "${{ secrets.GITHUB_TOKEN }}"
+            $rawTag = gh release view --json tagName --template '{{.tagName}}' 2>$null
+            if ($rawTag) {
+              $githubVersionStr = ([string]$rawTag).Trim()
+            }
+          } catch {
+            # No release found or command failed
+          }
+
+          $csprojPath = "ZenStates-Core.csproj"
+          [xml]$xml = Get-Content $csprojPath
+          $csprojVersionStr = ""
+          foreach ($pg in $xml.Project.PropertyGroup) {
+            if ($pg.Version) {
+              $csprojVersionStr = $pg.Version
+              break
+            }
+          }
+
+          $githubVersion = $null
+          if ($githubVersionStr -and $githubVersionStr -match '(\d+\.\d+\.\d+)') {
+            $githubVersion = [version]$Matches[1]
+          }
+
+          $csprojVersion = $null
+          if ($csprojVersionStr -and $csprojVersionStr -match '(\d+\.\d+\.\d+)') {
+            $csprojVersion = [version]$Matches[1]
+          } else {
+            $csprojVersion = [version]"1.0.0"
+          }
+
+          $baseVersion = $csprojVersion
+          if ($githubVersion -and $githubVersion -ge $csprojVersion) {
+            $baseVersion = [version]::new($githubVersion.Major, $githubVersion.Minor, ($githubVersion.Build + 1))
+          }
+
+          $finalVersion = "$($baseVersion.ToString(3))-pre${{ github.run_number }}"
+          echo "version=$finalVersion" >> $env:GITHUB_OUTPUT
+          $global:LASTEXITCODE = 0
+        shell: powershell
+
+      - name: Restore Dependencies
+        run: dotnet restore ZenStates-Core.csproj
+
+      - name: Build
+        run: dotnet build ZenStates-Core.csproj -c Release /p:Version=${{ steps.get_version.outputs.version }}
+
+      - name: Pack
+        run: dotnet pack ZenStates-Core.csproj -c Release /p:Version=${{ steps.get_version.outputs.version }} -o Release
+
+      - name: NuGet login
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: Metanome
+
+      - name: Push to NuGet.org
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: dotnet nuget push Release\*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ steps.login.outputs.NUGET_API_KEY }}

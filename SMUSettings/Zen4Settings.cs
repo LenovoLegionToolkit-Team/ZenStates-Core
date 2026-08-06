@@ -28,7 +28,7 @@
             Rsmu.SMU_MSG_SetPBOScalar = 0x5B;
             Rsmu.SMU_MSG_GetPBOScalar = 0x6D;
             Rsmu.SMU_MSG_IsOverclockable = 0x6F;
-            Rsmu.SMU_MSG_SetGfxclkOverdriveByFreqVid = 0x61;
+            //Rsmu.SMU_MSG_SetGfxclkOverdriveByFreqVid = 0x61;
             Rsmu.SMU_MSG_GetBoostLimitFrequency = 0x6E;
             Rsmu.SMU_MSG_SetBoostLimitFrequencyAllCores = 0x70;
 
@@ -38,6 +38,8 @@
             Rsmu.SMU_MSG_SetGpuPsmMargin = 0xA7;
             Rsmu.SMU_MSG_GetDldoPsmMargin = 0xD5;
             Rsmu.SMU_MSG_GetGpuPsmMargin = 0xD7;
+            Rsmu.SMU_MSG_SetCurveShaperMargin = 0xA6; // marginHigh << 24 | marginMedium << 16 | marginLow << 8 | someBit << 7 | frequencyTier & 0x7F
+            Rsmu.SMU_MSG_GetCurveShaperMargin = 0x84; // first 5 arguments are the frequency tiers [minimum, low, medium, high, maximum], 6th argument seems to be unused
 
             // Debug
             Rsmu.SMU_MSG_GetPboFusedPowerLimit = 0xDC; // Can be locked on some Zen 4 motherboards, Zen 5 not affected
@@ -65,7 +67,8 @@
             Mp1Smu.SMU_MSG_SetStapmTime = 0x4E;
             Mp1Smu.SMU_MSG_SetFastLimit = 0x3E;
             Mp1Smu.SMU_MSG_SetSlowLimit = 0x5F;
-            Mp1Smu.SMU_MSG_SetSlowTime = 0x60;
+            Mp1Smu.SMU_MSG_SetApuSlowLimit = 0x60;
+            Mp1Smu.SMU_MSG_SetSlowTime = 0x61;
             Mp1Smu.SMU_MSG_SetTctlMax = 0x3F;
             Mp1Smu.SMU_MSG_SetTDCVDDLimit = 0x3C;
             Mp1Smu.SMU_MSG_SetEDCVDDLimit = 0x3D;

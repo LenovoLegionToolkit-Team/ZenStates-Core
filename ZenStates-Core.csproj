@@ -3,14 +3,7 @@
     <RootNamespace>ZenStates.Core</RootNamespace>
     <TargetFrameworks>net9.0-windows</TargetFrameworks>
     <AssemblyTitle>ZenStates.Core</AssemblyTitle>
-    <Company>irusanov</Company>
-    <Product>ZenStates.Core</Product>
-    <Copyright>Copyright © 2026</Copyright>
-    <Authors>irusanov, LenovoLegionToolkit-Team</Authors>
     <PackageId>LLT.ZenStates-Core</PackageId>
-    <PackageProjectUrl>https://github.com/LenovoLegionToolkit-Team/ZenStates-Core</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/LenovoLegionToolkit-Team/ZenStates-Core</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>

@@ -43,6 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PawnIo\PawnIo.cs" />
     <Compile Include="PawnIo\RyzenSmu.cs" />
+    <Compile Include="PawnIo\AmdFamily17.cs" />
     <Compile Include="Mailbox\Mailbox.cs" />
     <Compile Include="Mailbox\RSMUMailbox.cs" />
     <Compile Include="Mailbox\MP1Mailbox.cs" />
@@ -60,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PawnIo\RyzenSMU.bin" />
+    <EmbeddedResource Include="Resources\PawnIo\AMDFamily17.bin" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" Pack="true" PackagePath="\" CopyToOutputDirectory="Always" />

@@ -340,3 +340,4 @@ ASALocalRun/
 healthchecksdb
 *.bak
 /scripts
+/demo

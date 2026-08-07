@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <VersionMajor>1</VersionMajor>
-    <VersionMinor>91</VersionMinor>
+    <VersionMinor>92</VersionMinor>
     <VersionBase>$(VersionMajor).$(VersionMinor)</VersionBase>
     <Authors>irusanov, LenovoLegionToolkit-Team</Authors>
     <Copyright>Copyright © 2026</Copyright>
